@@ -1,16 +1,11 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
-// import { useEffect, useState } from 'react';
-import readTodosRequest from './api/readTodosRequest';
-import { useQuery } from 'react-query';
-
+import { TodoPage } from './pages/TodoPage';
+import { LoginPage } from './pages/LoginPage';
 
 function App() {
 
 
-  const { isLoading, data: todos } = useQuery(
-    'todos',
-    readTodosRequest
-  );
   
   // useEffect(() => {
   //   readTodosRequest().then(setTodos); 
@@ -18,16 +13,11 @@ function App() {
 
   return (
     <div className="App">
-      {isLoading ? (
-        <div>loading...</div>
-      ) : (
-        todos.map((todo) => ( 
-        <div key={todo._id}>
-          {todo.text}
-          {`${todo.completed}`}
-        </div>
-      ))
-      )}
+      <Routes>
+        <Route path="/" element={<TodoPage/>}/>
+        <Route path="/login" element={<LoginPage/>}/>
+      </Routes>
+      
     </div>
   );
 }

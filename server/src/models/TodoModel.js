@@ -1,12 +1,8 @@
 const mongoose = require('mongoose');
 
 const TodoSchema = new mongoose.Schema({
-  text: {
-    type: String,
-  },
-  completed: {
-    type: Boolean, default: false 
-  }
+  text: { type: String },
+  completed: { type: Boolean, default: false }
 });
 
 const TodoModel = mongoose.model('Todo', TodoSchema);
